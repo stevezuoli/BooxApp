@@ -1,0 +1,39 @@
+
+pm framework for imx31
+ ./arch/arm/mach-mx3/pm.c 
+
+
+
+/drivers/regulator/lp3971.c
+
+
+// user space
+i2c-adapter i2c-0: master_xfer[0] R, addr=0x1a, len=2
+i2c-adapter i2c-0: ACK not received
+i2c-adapter i2c-0: ioctl, cmd=0x703, arg=0x1a
+i2c-adapter i2c-0: ioctl, cmd=0x708, arg=0x01
+i2c-adapter i2c-0: ioctl, cmd=0x720, arg=0xbee559f4
+i2c-adapter i2c-0: master_xfer[0] R, addr=0x1a, len=2
+i2c-adapter i2c-0: ACK not received
+
+
+// correct
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[1] R, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=2
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[1] R, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=2
+dcdc set voltage 0 10<7>i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[1] R, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=2
+Hi, from mx31_pm_enter
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[1] R, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=2
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[1] R, addr=0x34, len=1
+i2c-adapter i2c-0: master_xfer[0] W, addr=0x34, len=2
+
+// Disable ldo 1,2 3
+i2c_man 0 52 write 18 48

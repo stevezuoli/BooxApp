@@ -1,0 +1,10 @@
+<!DOCTYPE RCC><RCC version="1.0">
+  <qresource>
+    <file>res/clear_all.png</file>
+    <file>res/menu.png</file>
+    <file>res/jquery.min.js</file>
+    <file>res/load_fail.html</file>
+    <file>res/ota_status.html</file>
+    <file>res/connecting.html</file>
+  </qresource>
+</RCC>

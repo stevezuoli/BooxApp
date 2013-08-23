@@ -1,0 +1,15 @@
+ENABLE_QT()
+
+# Header files.
+FILE(GLOB HDRS *.h)
+QT4_WRAP_CPP(MOC_SRCS ${HDRS})
+
+# Source files.
+FILE(GLOB SRCS *.cpp)
+SET(SRCS ${HDRS} ${SRCS} ${MOC_SRCS})
+
+# Resources.
+SET(RESOURCE_SRCS network_service_res.qrc)
+QT4_ADD_RESOURCES(NETWORK_SERVICE_RES ${RESOURCE_SRCS})
+
+ADD_LIBRARY(network_service ${SRCS} ${NETWORK_SERVICE_RES})

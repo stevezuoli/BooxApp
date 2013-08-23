@@ -1,0 +1,7 @@
+<!DOCTYPE RCC><RCC version="1.0">
+  <qresource>
+    <file>res/start_downloading.png</file>
+    <file>res/stop_downloading.png</file>
+    <file>res/jquery.min.js</file>
+  </qresource>
+</RCC>

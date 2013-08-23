@@ -1,0 +1,59 @@
+准备工作:
+确保设备已经通过ADSToolKit烧写了原版的redboot.
+
+1. 重新构造BBT
+RedBoot> nand scan -o
+
+2. 初始化Redboot分区表
+RedBoot> fis init
+About to initialize [format] FLASH image system - continue (y/n)? y
+*** Initialize FLASH Image System
+... Erase from 0x00080000-0x000a0000: .
+... Program from 0x07ee0000-0x07f00000 at 0x00080000: .
+
+3. 初始化Redboot配置信息
+RedBoot> fconfig -i
+Initialize non-volatile configuration - continue (y/n)? y
+Run script at boot: true
+Boot script:
+Enter script, terminate with empty line
+>> fis load kernel
+>> exec -b 0x100000 -l 0x200000 -c "noinitrd console=ttymxc0,115200 root=/dev/mtdblock4 rootfstype=yaffs2 init=/linuxrc"
+>>
+Boot script timeout (1000ms resolution): 1
+Use BOOTP for network configuration: false
+Gateway IP address:
+Local IP address:
+Local IP address mask:
+Default server IP address:
+Board specifics: 0
+Console baud rate: 115200
+Set eth0 network hardware address [MAC]: false
+GDB connection port: 9000
+Force console for special debug messages: false
+Network debug at boot time: false
+Update RedBoot non-volatile configuration - continue (y/n)? y
+... Read from 0x07ee0000-0x07eff000 at 0x00080000: .
+... Erase from 0x00080000-0x000a0000: .
+... Program from 0x07ee0000-0x07f00000 at 0x00080000: .
+
+4. 烧写Redboot
+RedBoot> load -r -b 0x100000 -m xmodem (此处选择redboot60.bin)
+RedBoot> run 0x100000
+Ctrl+C
+RedBoot> romupdate
+
+5. 烧写启动画面 (boot splash)
+RedBoot> load -r -b 0x100000 -m xmodem (此处选择boot_splash.dat)
+RedBoot> fis create "boot splash" -f 0x100000 -l 0x100000
+RedBoot> fis create kernel -f 0x200000 -l 0x200000
+
+7. 烧写initramfs
+RedBoot> load -r -b 0x100000 -m xmodem (此处选择zImage-initramfs)
+RedBoot> fis create initramfs -f 0x400000 -l 0x300000
+
+**** 重复步骤3 **** (非常重要)
+
+插入SD卡进行软件升级. 注意, 单板由于没有OK键, 所以不能正常升级, 可以在命令行下这样做:
+RedBoot> fis load initramfs
+RedBoot> exec -b 0x100000 -l 0x300000 -c "noinitrd console=ttymxc0,115200 root=/dev/mtdblock4 rootfstype=yaffs2 video=600*800:8 init=/linuxrc"

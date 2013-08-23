@@ -1,0 +1,44 @@
+This code is tested with Linux kernel Release 2.4.20 on PCI card and
+2.4.18-rmk7-pxa3-asi2 on Accelent Add on card
+
+
+Change Log:
+==========
+
+Release1.20
+-----------
+ - Host
+  - Removed dependancy of td_t, dev_t data structure starting address on 16
+    byte boundary
+  - Calling directly reg_read/write, buff_read/write functions from hal_intf.h
+  - ping-pong and pong-ping sequence, more corner cases support for the ping-pong PTDs
+  - Root hub is changed from timer to Interrupt (RHSC & OPR_INT)
+
+ - OTG
+  - Calling directly reg_read/write, buff_read/write functions from hal_intf.h
+  - OTG1.0A specification changes with OPT (0.9) testing
+
+ - Device
+  - Calling directly reg_read/write, buff_read/write functions from hal_intf.h
+  - Mass storage class driver pipe variable initialization
+  - SET_ADDRESS reception in addressed state
+
+ - Application
+  - Synchronization of otgmsapp and otgcmd.o by calling otgtool functions
+
+ - HAL
+  - new isp1362 buffer access (read/write) functions
+  - x86pci: 
+    - added support for new PLX9054-AC chip support
+      - added support for Host only and device only modes hw setting
+  - Accelent:
+      - added support for Host only and device only modes hw setting
+
+Release1.10
+-----------
+ - Added support for ISP1362 Add-on card for Intel PXA250 Accelent IDP platform
+
+Release1.00
+-----------
+ - Initial release
+ - Supports ISP1362 PCI evaluation kit on X86 platform

@@ -1,0 +1,13 @@
+
+source code location
+/opt/freescale/pkgs/linux-2.6.26/arch/arm/mach-mx3/mxc_pm.c
+
+/opt/onyx/kernel/
+
+ARCH=arm CROSS_COMPILE=arm-linux- make onyx_defconfig
+ARCH=arm CROSS_COMPILE=arm-linux- make modules
+ARCH=arm CROSS_COMPILE=arm-linux- make Image
+ARCH=arm CROSS_COMPILE=arm-linux- make zImage
+ARCH=arm CROSS_COMPILE=arm-linux- make menuconfig
+
+http://www.mjmwired.net/kernel/Documentation/arm/README

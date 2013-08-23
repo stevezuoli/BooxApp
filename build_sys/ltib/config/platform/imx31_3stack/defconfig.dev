@@ -1,0 +1,356 @@
+#
+# Automatically generated make config: don't edit
+# LTIB version: 7.4.1
+#
+CONFIG_CONFIG_TITLE="LTIB: Freescale IMX31 3-Stack reference board"
+CONFIG_CPU="MX31"
+CONFIG_PLATFORM_COMMENT="Freescale IMX31 3-Stack reference board"
+CONFIG_VENDOR="Freescale"
+CONFIG_PLATFORM="imx31_3stack"
+CONFIG_GNUTARCH="arm"
+CONFIG_LINTARCH="arm"
+CONFIG_CFGHOST="arm-linux"
+CONFIG_VFP=y
+CONFIG_ENDIAN="little"
+
+#
+# Choose the target C library type
+#
+CONFIG_GLIBC=y
+# CONFIG_UCLIBC is not set
+CONFIG_CHOICE_BASE_LIBS=y
+# CONFIG_CHOICE_GLIBC is not set
+# CONFIG_CHOICE_UCLIBC is not set
+# CONFIG_LIBC_NONE is not set
+
+#
+# Toolchain component options
+#
+CONFIG_PKG_BASE_LIBS=y
+CONFIG_PKG_LIBC_WANT_SHARED_LIBS=y
+# CONFIG_PKG_LIBC_WANT_CRT_FILES is not set
+# CONFIG_PKG_LIBC_WANT_HEADERS1 is not set
+# CONFIG_PKG_LIBC_WANT_STATIC_LIBS is not set
+# CONFIG_PKG_LIBC_WANT_C_LOCALES is not set
+CONFIG_PKG_CXX_WANT_SHARED_LIBS=y
+# CONFIG_PKG_CXX_WANT_HEADERS is not set
+# CONFIG_PKG_CXX_WANT_STATIC_LIBS is not set
+CONFIG_PKG_GCC_WANT_LIBGCC_SHARED=y
+CONFIG_DYNAMIC_LINKER="/lib/ld.so.1"
+CONFIG_SYS_WANT_MMU=y
+CONFIG_SYS_WANT_SHARED=y
+CONFIG_MXC_PLATFORM=y
+
+#
+# Choose your toolchain
+#
+# CONFIG_TOOLCHAIN1 is not set
+# CONFIG_TOOLCHAIN2 is not set
+# CONFIG_TOOLCHAIN3 is not set
+CONFIG_TOOLCHAIN4=y
+# CONFIG_TOOLCHAIN_CUSTOM is not set
+CONFIG_TOOLCHAIN="tc-fsl-x86lnx-armeabi-nptl-4.1.2-3.i386.rpm"
+CONFIG_TOOLCHAIN_PATH="/opt/freescale/usr/local/gcc-4.1.2-glibc-2.5-nptl-3/arm-none-linux-gnueabi"
+CONFIG_TOOLCHAIN_PREFIX="arm-none-linux-gnueabi-"
+CONFIG_TOOLCHAIN_CFLAGS="-O2 -fsigned-char -mfloat-abi=softfp -mfpu=vfp"
+
+#
+# Choose your Kernel
+#
+# CONFIG_KERNEL1 is not set
+# CONFIG_KERNEL_DIR_BUILD is not set
+CONFIG_KERNEL_NONE=y
+# CONFIG_PKG_KERNEL_FORCE is not set
+CONFIG_PKG_KERNEL_PRECONFIG="linux-kernel-dir-build.config"
+CONFIG_DISTRO="dist/lfs-5.1"
+
+#
+# Package selection
+#
+
+#
+# Package list
+#
+
+#
+# Platform specific package selection
+#
+# CONFIG_PKG_GST_FSLV4LSINK is not set
+# CONFIG_PKG_GX200_BU_98000 is not set
+# CONFIG_PKG_HANTRO_BINARY is not set
+# CONFIG_PKG_IMX_TEST is not set
+# CONFIG_PKG_IMX_LIB is not set
+# CONFIG_PKG_GL_GPS is not set
+# CONFIG_PKG_VTE_MXC is not set
+
+#
+# Common package selection list
+#
+# CONFIG_PKG_ATK is not set
+# CONFIG_PKG_AUTOCONF is not set
+# CONFIG_PKG_AUTOMAKE is not set
+# CONFIG_PKG_ALSA_LIB is not set
+# CONFIG_PKG_ALSA_UTILS is not set
+# CONFIG_PKG_BASH is not set
+# CONFIG_PKG_BIND is not set
+# CONFIG_PKG_BINUTILS is not set
+# CONFIG_PKG_BISON is not set
+# CONFIG_PKG_BLUEZ_HCIDUMP is not set
+# CONFIG_PKG_BLUEZ_LIBS is not set
+# CONFIG_PKG_BLUEZ_UTILS is not set
+# CONFIG_PKG_BOA is not set
+# CONFIG_PKG_BONNIE_PLUS_PLUS is not set
+# CONFIG_PKG_BRIDGE_UTILS is not set
+CONFIG_PKG_BUSYBOX=y
+CONFIG_PKG_BUSYBOX_PRECONFIG="busybox.config"
+# CONFIG_PKG_BUSYBOX_WANT_CF is not set
+# CONFIG_PKG_BZIP2 is not set
+# CONFIG_PKG_CAIRO is not set
+# CONFIG_PKG_CAN4LINUX is not set
+# CONFIG_PKG_CLAMAV is not set
+# CONFIG_PKG_CONNTRACK_TOOLS is not set
+# CONFIG_PKG_COREUTILS is not set
+# CONFIG_PKG_CPIO is not set
+# CONFIG_PKG_CRACKLIB is not set
+# CONFIG_PKG_CRAMFS is not set
+# CONFIG_PKG_CURL is not set
+# CONFIG_PKG_DAEMONIZER is not set
+# CONFIG_PKG_DEVMEM2 is not set
+# CONFIG_PKG_DHCP is not set
+# CONFIG_PKG_DB1 is not set
+# CONFIG_PKG_DEV is not set
+# CONFIG_PKG_DEVFSD is not set
+CONFIG_PKG_DEV_NONE=y
+# CONFIG_PKG_DIFFUTILS is not set
+# CONFIG_PKG_DISTCC is not set
+# CONFIG_PKG_DOSFSTOOLS is not set
+# CONFIG_PKG_DROPBEAR is not set
+# CONFIG_PKG_DTC is not set
+# CONFIG_PKG_E2FSPROGS is not set
+# CONFIG_PKG_ED is not set
+# CONFIG_PKG_ETHTOOL is not set
+# CONFIG_PKG_EXPAT is not set
+# CONFIG_PKG_FAKEROOT is not set
+CONFIG_PKG_FAKE_PROVIDES=y
+# CONFIG_PKG_FBSET is not set
+# CONFIG_PKG_FINDUTILS is not set
+# CONFIG_PKG_FLEX is not set
+# CONFIG_PKG_FONTCONFIG is not set
+# CONFIG_PKG_FREETYPE is not set
+# CONFIG_PKG_GAWK is not set
+# CONFIG_PKG_GCC is not set
+# CONFIG_PKG_GDB is not set
+# CONFIG_PKG_GENEXT2FS is not set
+# CONFIG_PKG_GENROMFS is not set
+# CONFIG_PKG_GETTEXT is not set
+# CONFIG_PKG_GLIB2 is not set
+# CONFIG_PKG_GMP is not set
+# CONFIG_PKG_GREP is not set
+# CONFIG_PKG_GROFF is not set
+# CONFIG_PKG_GSTREAMER_CORE is not set
+# CONFIG_PKG_GTK2 is not set
+# CONFIG_PKG_HDPARM is not set
+# CONFIG_PKG_HELLOWORLD is not set
+# CONFIG_PKG_HELLOWORLD_MOD is not set
+# CONFIG_PKG_HESIOD is not set
+# CONFIG_PKG_HOTPLUG is not set
+# CONFIG_PKG_HTTPD is not set
+# CONFIG_PKG_I2C_TOOLS is not set
+# CONFIG_PKG_IOZONE is not set
+# CONFIG_PKG_INPUT_UTILS is not set
+# CONFIG_PKG_PANGO is not set
+# CONFIG_PKG_PIDENTD is not set
+# CONFIG_PKG_INETUTILS is not set
+# CONFIG_PKG_IPERF is not set
+# CONFIG_PKG_IPSECADM is not set
+# CONFIG_PKG_IPUTILS is not set
+# CONFIG_PKG_IRATTACH is not set
+# CONFIG_PKG_IRDADUMP is not set
+# CONFIG_PKG_KBD is not set
+# CONFIG_PKG_KRB5 is not set
+# CONFIG_PKG_LESS is not set
+# CONFIG_PKG_LFS_UTILS is not set
+# CONFIG_PKG_LIBICONV is not set
+# CONFIG_PKG_LIBID3TAG is not set
+# CONFIG_PKG_LIBMAD is not set
+# CONFIG_PKG_LIBNETFILTER_CONNTRACK is not set
+# CONFIG_PKG_LIBNFNETLINK is not set
+# CONFIG_PKG_LIBJPEG is not set
+# CONFIG_PKG_LIBELF is not set
+# CONFIG_PKG_LIBPCAP is not set
+# CONFIG_PKG_LIBPNG is not set
+# CONFIG_PKG_LIBOIL is not set
+# CONFIG_PKG_LIBTERMCAP is not set
+# CONFIG_PKG_LIBTIFF is not set
+# CONFIG_PKG_LIBTOOL is not set
+# CONFIG_PKG_LIBUSB is not set
+# CONFIG_PKG_LIBXML2 is not set
+# CONFIG_PKG_LINUX_ATM is not set
+# CONFIG_PKG_LINUX_WLAN is not set
+# CONFIG_PKG_LKC is not set
+# CONFIG_PKG_LTP is not set
+# CONFIG_PKG_LMBENCH is not set
+# CONFIG_PKG_LRZSZ is not set
+# CONFIG_PKG_M4 is not set
+# CONFIG_PKG_MADPLAY is not set
+# CONFIG_PKG_MAKE is not set
+# CONFIG_PKG_MAN is not set
+# CONFIG_PKG_MDADM is not set
+CONFIG_PKG_MERGE=y
+# CONFIG_PKG_MICROWINDOWS is not set
+# CONFIG_PKG_MINICOM is not set
+# CONFIG_PKG_MODUTILS is not set
+# CONFIG_PKG_MODULE_INIT_TOOLS is not set
+CONFIG_MODUTILS_NONE=y
+# CONFIG_PKG_MP3PLAY is not set
+# CONFIG_PKG_MTD_UTILS is not set
+# CONFIG_PKG_MYSQL is not set
+# CONFIG_PKG_NCURSES is not set
+# CONFIG_PKG_NET_SNMP is not set
+# CONFIG_PKG_NET_TOOLS is not set
+# CONFIG_PKG_NETPERF is not set
+# CONFIG_PKG_NFS_UTILS is not set
+# CONFIG_PKG_NSS_MDNS is not set
+# CONFIG_PKG_NTPCLIENT is not set
+# CONFIG_PKG_OPENOBEX is not set
+# CONFIG_PKG_OPENSSH is not set
+# CONFIG_PKG_OPENSSL is not set
+# CONFIG_PKG_OPENSWAN is not set
+# CONFIG_PKG_OPROFILE is not set
+# CONFIG_PKG_PATCH is not set
+# CONFIG_PKG_PCIUTILS is not set
+# CONFIG_PKG_PCMCIAUTILS is not set
+# CONFIG_PKG_PCRE is not set
+# CONFIG_PKG_PERL is not set
+# CONFIG_PKG_PHP is not set
+# CONFIG_PKG_PLAY is not set
+# CONFIG_PKG_POPT is not set
+# CONFIG_PKG_PORTMAP is not set
+CONFIG_PKG_PPP=y
+# CONFIG_PKG_PPP_WANT_FILTER is not set
+# CONFIG_PKG_PROCINFO is not set
+# CONFIG_PKG_PROCPS is not set
+# CONFIG_PKG_PSMISC is not set
+# CONFIG_PKG_PYTHON is not set
+
+#
+# Qtopia
+#
+CONFIG_QTOPIA_NONE=y
+# CONFIG_PKG_QTOPIA is not set
+# CONFIG_PKG_QTOPIA_4 is not set
+
+#
+# Applications
+#
+
+#
+# Settings applications
+#
+# CONFIG_PKG_RPM is not set
+# CONFIG_PKG_RNG_TOOLS is not set
+# CONFIG_PKG_RSYNC is not set
+# CONFIG_PKG_SAMBA is not set
+# CONFIG_PKG_SASH is not set
+# CONFIG_PKG_SCHEDUTILS is not set
+# CONFIG_PKG_SCREEN is not set
+# CONFIG_PKG_SED is not set
+# CONFIG_PKG_SEQ is not set
+# CONFIG_PKG_SETSERIAL is not set
+CONFIG_PKG_SKELL=y
+# CONFIG_PKG_SKELL_WANT_TERMINFO is not set
+# CONFIG_PKG_SPARSE is not set
+# CONFIG_PKG_STRACE is not set
+CONFIG_PKG_SYSCONFIG=y
+# CONFIG_PKG_SYSFSUTILS is not set
+# CONFIG_PKG_SYSKLOGD is not set
+# CONFIG_PKG_SYSVINIT is not set
+# CONFIG_PKG_TAR is not set
+# CONFIG_PKG_TCPDUMP is not set
+# CONFIG_PKG_TCP_WRAPPERS is not set
+# CONFIG_PKG_TERMCAP is not set
+# CONFIG_PKG_TEXINFO is not set
+# CONFIG_PKG_TIME is not set
+# CONFIG_PKG_TIMEZONE is not set
+# CONFIG_PKG_TINYLOGIN is not set
+# CONFIG_PKG_TINYPROXY is not set
+# CONFIG_PKG_TSLIB is not set
+CONFIG_PKG_UDEV=y
+# CONFIG_PKG_USBUTILS is not set
+# CONFIG_PKG_UCLINUX_CKSUM is not set
+# CONFIG_PKG_UTIL_LINUX is not set
+# CONFIG_PKG_U_BOOT_TOOLS is not set
+# CONFIG_PKG_UNIFDEF is not set
+# CONFIG_PKG_UNZIP is not set
+# CONFIG_PKG_VIM is not set
+# CONFIG_PKG_VSFTPD is not set
+# CONFIG_PKG_WATCHDOG is not set
+# CONFIG_PKG_WGET is not set
+# CONFIG_PKG_WHICH is not set
+CONFIG_PKG_WIRELESS_TOOLS=y
+# CONFIG_PKG_YAFFS_UTILS is not set
+# CONFIG_PKG_ZLIB is not set
+
+#
+# Additional Package selection
+#
+# CONFIG_PKG_NBENCH_BYTE is not set
+# CONFIG_PKG_WHETSTONE is not set
+# CONFIG_PKG_DHRYSTONE is not set
+
+#
+# Target System Configuration
+#
+
+#
+# Options
+#
+CONFIG_SYSCFG_HOSTNAME="onyx"
+CONFIG_SYSCFG_WANT_LOGIN_TTY=y
+CONFIG_SYSCFG_LOGING_TTY="::respawn:/sbin/getty -L ttymxc0 115200 vt100"
+CONFIG_SYSCFG_MODLIST=""
+# CONFIG_SYSCFG_START_DEVFSD is not set
+# CONFIG_SYSCFG_START_NETWORK is not set
+# CONFIG_SYSCFG_SETTIME is not set
+# CONFIG_SYSCFG_START_SYSLOG is not set
+# CONFIG_SYSCFG_START_INETD is not set
+
+#
+# Target Image Generation
+#
+
+#
+# Options
+#
+
+#
+# Choose your root filesystem image type
+#
+# CONFIG_DEPLOYMENT_JFFS2 is not set
+# CONFIG_DEPLOYMENT_RAMDISK is not set
+# CONFIG_DEPLOYMENT_CRAMFS is not set
+# CONFIG_DEPLOYMENT_ROMFS is not set
+CONFIG_DEPLOYMENT_NFS=y
+CONFIG_SYSCFG_DEPLOYMENT_STYLE="NFS"
+# CONFIG_SYSCFG_READONLY_FS is not set
+CONFIG_SYSCFG_TMPFS_SIZE="512k"
+CONFIG_SYSCFG_RAM_DIRS=""
+CONFIG_ERASE_BLOCK_SIZE="64"
+CONFIG_CAP_UCLIBC=y
+CONFIG_CAP_GLIBC=y
+CONFIG_CAP_LFS_5_1=y
+CONFIG_CAP_HAS_MMU=y
+CONFIG_CAP_HAS_SHARED=y
+CONFIG_SYSCFG_TMPFS="tmpfs"
+CONFIG_INITTAB_LINE="::respawn:/sbin/getty -L console 0 screen"
+CONFIG_UCLIBC_DYNAMIC_LINKER="/lib/ld-uClibc.so.0"
+CONFIG_GLIBC_DYNAMIC_LINKER="/lib/ld.so.1"
+CONFIG_SYSCFG_BAUD="115200"
+CONFIG_SYSCFG_CONSOLEDEV="ttyS0"
+CONFIG_SYSCFG_BOOTLOADER="u-boot"
+CONFIG_U_BOOT_IMAGE_TYPE="ppc"
+CONFIG_SYSCFG_LOADKERNELADDR="0x800000"
+CONFIG_SYSCFG_LOADDTBADDR="0x9F0000"
+CONFIG_SYSCFG_LOADRAMADDR="0xB00000"
+CONFIG_SYSCFG_CUTARG="zImage"
+CONFIG_LTIB_RELEASE="7.4.1"

@@ -1,0 +1,16 @@
+#
+# /etc/fstab: static file system information.
+#
+# /proc and /sys need to be mounted very early for udev.
+# This is done in the separate init script /etc/rc.d/init.d/mount-proc-sys
+
+#
+# file system   mount         type    options           dump    pass
+#proc           /proc         proc    defaults          0       0
+#sysfs          /sys          sysfs   defaults          0       0
+
+tmpfs           /tmp          tmpfs   defaults          0       0
+tmpfs           /var          tmpfs   defaults          0       0
+/dev/mtdblock5  /root         yaffs2  defaults          0       0
+/dev/mtdblock6  /media/mtd6   yaffs2  defaults          0       0
+/media/mtd6/vfat.bin /media/flash vfat loop,iocharset=utf8,atime 0    0

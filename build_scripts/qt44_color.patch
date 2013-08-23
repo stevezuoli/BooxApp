@@ -1,0 +1,22 @@
+1096d1095
+< // Onyx patch for grayscale.
+1101d1099
+<     return qGray(qRed(color), qGreen(color), qBlue(color));
+1103d1100
+<     /*
+1109d1105
+<     */
+1116,1123d1111
+<     // The color is rgb 444
+<     uchar r = ((color >> 8 )& 0x0f);
+<     uchar g = (color & 0x00f0);
+<     uchar b = (color & 0x000f);
+< 
+<     uchar tr = (r << 4) | r;
+<     uchar tg = g | (g >> 4);
+<     uchar tb = (b << 4) | b;
+1125,1126d1112
+<     return qGray(tr, tg, tb);
+<     /*
+1136d1121
+<     */

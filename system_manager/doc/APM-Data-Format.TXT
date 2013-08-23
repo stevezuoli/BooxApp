@@ -1,0 +1,48 @@
+1.13
+ *   0) Linux driver version (this will change if format changes)
+
+1.2
+ *   1) APM BIOS Version.  Usually 1.0, 1.1 or 1.2.
+
+0x02
+ *   2) APM flags from APM Installation Check (0x00):
+ *	bit 0: APM_16_BIT_SUPPORT
+ *	bit 1: APM_32_BIT_SUPPORT
+ *	bit 2: APM_IDLE_SLOWS_CLOCK
+ *	bit 3: APM_BIOS_DISABLED
+ *	bit 4: APM_BIOS_DISENGAGED
+
+0x00
+ *   3) AC line status
+ *	0x00: Off-line
+ *	0x01: On-line
+ *	0x02: On backup power (BIOS >= 1.1 only)
+ *	0xff: Unknown
+ 
+0x02
+ *   4) Battery status
+ *	0x00: High
+ *	0x01: Low
+ *	0x02: Critical
+ *	0x03: Charging
+ *	0x04: Selected battery not present (BIOS >= 1.2 only)
+ *	0xff: Unknown
+ 
+0x02
+ *   5) Battery flag
+ *	bit 0: High
+ *	bit 1: Low
+ *	bit 2: Critical
+ *	bit 3: Charging
+ *	bit 7: No system battery
+ *	0xff: Unknown
+ 
+-121%
+*   6) Remaining battery life (percentage of charge):
+ *	0-100: valid
+ *	-1: Unknown
+
+-1 min
+ *   7) Remaining battery life (time units):
+ *	Number of remaining minutes or seconds
+ *	-1: Unknown

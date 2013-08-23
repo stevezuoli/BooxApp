@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e  # exit on error
+
+echo "Copying files ..."
+
+TMPDIR=dist/onyxsdk
+
+mkdir -p $TMPDIR
+cp -r sdk/include $TMPDIR/include
+mkdir -p $TMPDIR/lib
+cp libs/libonyxsdk.a $TMPDIR/lib/
+cp -r licenses $TMPDIR/
+
+# Remove .svn directories if any.
+find $TMPDIR -type d -and -name '.svn' | xargs rm -rf
+
+echo "Packaging ..."
+cd dist
+tar -czf onyxsdk.tar.gz onyxsdk
+
+cd ..
+rm -r $TMPDIR

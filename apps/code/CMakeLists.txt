@@ -1,0 +1,16 @@
+# All sub directories.
+add_subdirectory(comic_reader)
+add_subdirectory(html_reader)
+add_subdirectory(image_reader)
+add_subdirectory(lib)
+add_subdirectory(met)
+add_subdirectory(mouse_calibration)
+add_subdirectory(naboo_reader)
+add_subdirectory(oar_tools)
+add_subdirectory(office_viewer)
+add_subdirectory(testing)
+add_subdirectory(text_editor)
+#add_subdirectory(update_splash)
+add_subdirectory(webapp)
+add_subdirectory(webbrowser)
+

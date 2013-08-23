@@ -1,0 +1,46 @@
+alias ll='ls -l'
+alias la='ll -a'
+
+export PS1='\u@\h \w$ '
+export PS2='> '
+export PS3='? '
+export PS4='[$LINENO]+'
+
+export PATH=$PATH:/opt/onyx/arm/bin
+export LD_LIBRARY_PATH=/opt/onyx/arm/lib
+export HOME=/root
+export DISPLAY_SIZE=6
+export DEFAULT_ROT=3
+export SCREEN_WIDTH=600
+export SCREEN_HEIGHT=800
+export WAVEFORM=3
+export BDR_VAL=0
+export MALLOC_CHECK_=0
+export QWS_DISPLAY="Transformed:Rot0:OnyxScreen:/dev/mem"
+export TSLIB_TSDEVICE=/dev/ttymxc1
+export TSLIB_CONFFILE=/etc/ts.conf
+export TSLIB_PLUGINDIR=/opt/onyx/arm/lib/ts
+export TSLIB_CALIBFILE=/root/Settings/pointercal
+export POINTERCAL_FILE=/root/Settings/pointercal
+export QWS_KEYBOARD=NabooKeyboard:/dev/input/event0
+export QWS_MOUSE_PROTO=tslib:/dev/ttymxc1
+export DEFAULT_FONT=/opt/onyx/arm/lib/fonts/AdobeHeitiStd_Regular_FONT.ttf
+export DBUS_SYSTEM_BUS_ADDRESS="unix:path=/var/run/dbus/system_bus_socket"
+#export TZ=/root/Settings/localtime
+export ONYX_DB_DIR=".onyx"
+export FONT_DIR="/opt/onyx/arm/lib/fonts/"
+export SUSPEND_INTERVAL=0
+export SHUTDOWN_INTERVAL=900000
+export PINCODE="0000"
+export NO_TOUCH=1
+export SHOW_OFFICE_SPLASH=1
+export ADOBE_RESOURCE_FOLDER="/usr/share/adobe/res/"
+
+source /etc/version
+source /root/Settings/language
+source /root/Settings/screen
+source /root/Settings/waveform
+
+[ -f /root/Settings/grayscale ] && source /root/Settings/grayscale
+
+[ -f /root/Settings/vdd ] && source /root/Settings/vdd

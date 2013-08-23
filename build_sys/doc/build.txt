@@ -1,0 +1,7 @@
+using 
+1. /opt/onyx/kernel/linux-2.6.26/arch/arm/configs/xxx_defconfig
+to change device name
+CONFIG_EXPORTED_FLASH_DISPLAY_NAME = "xxx xxx disk"
+
+
+2. change the build-env to use the kernel config

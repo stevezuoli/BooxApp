@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ "$1" = "stop" ]
+then
+    echo Unmounting filesystems
+    umount -a -r
+    mount -o remount -r %root% /
+    swapoff -a
+fi
+
+if [ "$1" = "start" ]
+then
+    echo Mounting filesystems
+    # /proc is mounted by the mount-proc-sys script
+    # mount -t proc  proc  /proc
+    if [ ! -e /etc/mtab ]
+    then
+        ln -s /proc/mounts /etc/mtab
+    fi
+    mount -a
+    mkdir -p /var/run
+fi

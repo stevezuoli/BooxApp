@@ -1,0 +1,8 @@
+ENABLE_QT()
+
+INCLUDE_DIRECTORIES(BEFORE
+src)
+
+SET(ONYX_LIBS onyx_sys onyx_ui onyx_screen)
+
+ADD_SUBDIRECTORY(src)

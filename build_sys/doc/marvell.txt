@@ -1,0 +1,25 @@
+
+1 .generate NTIM bin file: wtptp_pxa168//binaries/ntbb_linux.exe -m l -r NTIM_A0_ASPENITE_REV2_256MB_modex_pm_Micron.txt
+The result is located in wtptp_pxa168/binaries/NTIM_A0_ASPENITE_REV2_256MB_modex_pm.bin
+
+2. generate ASPN_NTLOADER.bin
+wtptp_pxa168/Loader/Build$ ./make_loader_aspen.sh
+result
+wtptp_pxa168/Loader/Build$ ls ../Platforms/ASPN/ReleaseLinux/
+
+
+
+NTIM_A0-SSPENITE_REV2_256MB_400MHZ_mode3_pm.bin    --> 0x00000000
+ASPN_NTLOADER.bin                                  --> 0x00020000
+u-boot.bin                                         --> 0x00040000
+zImage                                             --> 0x00920000
+roofs_nopad.jffs2                                  --> 0x00c20000
+
+
+jtag kernel to 0x920000
+
+file system  (using jffs2)
+jtag /opt/onyx/marvell/rel/target/prebuilt_bin_aspenite/rootfs_nopad.jffs2 to 0xc20000
+
+JTAG…’–¥rootfs_nopad.jffs2µΩ0xc20000
+ 

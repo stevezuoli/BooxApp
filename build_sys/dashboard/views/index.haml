@@ -1,0 +1,15 @@
+%h1 Build dashboard
+- @branches.keys.each do |branch|
+  %h2= branch
+  %table
+    %thead
+      %th
+      - @branches[branch]['profiles'].each do |profile|
+        %th= profile
+    %tbody
+      - @branches[branch]['kernels'].each do |kernel|
+        %tr
+          %td= kernel
+          - @branches[branch]['profiles'].each do |profile|
+            - build = @branches[branch]['builds'][kernel][profile]
+            %td= build[:id]

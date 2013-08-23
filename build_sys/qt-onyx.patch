@@ -1,0 +1,59 @@
+diff -ruN qt-embedded-linux-opensource-src-4.5.2.orig/configure qt-embedded-linux-opensource-src-4.5.2/configure
+--- qt-embedded-linux-opensource-src-4.5.2.orig/configure	2009-06-20 13:02:13.000000000 +0800
++++ qt-embedded-linux-opensource-src-4.5.2/configure	2009-07-21 14:33:22.000000000 +0800
+@@ -4639,6 +4639,8 @@
+         QT_CFLAGS_DBUS=`$PKG_CONFIG --cflags dbus-1 2>/dev/null`
+         QT_LIBS_DBUS=`$PKG_CONFIG --libs dbus-1 2>/dev/null`
+     fi
++    QT_CFLAGS_DBUS="-I$TOOLCHAIN_PATH/usr/include/dbus-1.0 -I$TOOLCHAIN_PATH/usr/lib/dbus-1.0/include"
++    QT_LIBS_DBUS="-L$TOOLCHAIN_PATH/usr/lib -ldbus-1"
+     if "$unixtests/compile.test" "$XQMAKESPEC" "$QMAKE_CONFIG" $OPT_VERBOSE "$relpath" "$outpath" config.tests/unix/dbus "D-Bus" $L_FLAGS $I_FLAGS $l_FLAGS $QT_CFLAGS_DBUS $QT_LIBS_DBUS $MAC_ARCHS_COMMANDLINE; then
+         [ "$CFG_DBUS" = "auto" ] && CFG_DBUS=yes
+         QMakeVar set QT_CFLAGS_DBUS "$QT_CFLAGS_DBUS"
+diff -ruN qt-embedded-linux-opensource-src-4.5.2.orig/src/gui/painting/qdrawhelper_p.h qt-embedded-linux-opensource-src-4.5.2/src/gui/painting/qdrawhelper_p.h
+--- qt-embedded-linux-opensource-src-4.5.2.orig/src/gui/painting/qdrawhelper_p.h	2009-06-20 13:02:18.000000000 +0800
++++ qt-embedded-linux-opensource-src-4.5.2/src/gui/painting/qdrawhelper_p.h	2009-07-21 14:48:25.000000000 +0800
+@@ -1159,16 +1159,13 @@
+ }
+ 
+ #ifdef QT_QWS_DEPTH_8
++// Onyx patch for grayscale.
+ template <>
+ inline quint8 qt_colorConvert(quint32 color, quint8 dummy)
+ {
+     Q_UNUSED(dummy);
+ 
+-    uchar r = ((qRed(color) & 0xf8) + 0x19) / 0x33;
+-    uchar g = ((qGreen(color) &0xf8) + 0x19) / 0x33;
+-    uchar b = ((qBlue(color) &0xf8) + 0x19) / 0x33;
+-
+-    return r*6*6 + g*6 + b;
++    return qGray(qRed(color), qGreen(color), qBlue(color));
+ }
+ 
+ template <>
+@@ -1176,15 +1173,16 @@
+ {
+     Q_UNUSED(dummy);
+ 
+-    uchar r = (color & 0xf800) >> (11-3);
+-    uchar g = (color & 0x07c0) >> (6-3);
+-    uchar b = (color & 0x001f) << 3;
+-
+-    uchar tr = (r + 0x19) / 0x33;
+-    uchar tg = (g + 0x19) / 0x33;
+-    uchar tb = (b + 0x19) / 0x33;
++    // The color is rgb 444
++    uchar r = ((color >> 8 )& 0x0f);
++    uchar g = (color & 0x00f0);
++    uchar b = (color & 0x000f);
++
++    uchar tr = (r << 4) | r;
++    uchar tg = g | (g >> 4);
++    uchar tb = (b << 4) | b;
+ 
+-    return tr*6*6 + tg*6 + tb;
++    return qGray(tr, tg, tb);
+ }
+ 
+ #endif // QT_QWS_DEPTH_8

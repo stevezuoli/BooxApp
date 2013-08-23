@@ -1,0 +1,5 @@
+with_music_player=1
+with_splash_update=1
+export HAS_TOUCH=1
+kernel_config=onyx_defconfig
+initramfs_config=onyx_initramfs_defconfig

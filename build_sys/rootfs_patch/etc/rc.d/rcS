@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# minimal startup script, will work with msh (this is best available in
+# MMUless format).
+
+# load the configuration information
+. /etc/rc.d/rc.conf
+mode=${1:-start}
+if [ $mode = "start" ]
+then
+    services=$cfg_services
+else
+    services=$cfg_services_r
+fi
+cfg_services=${2:-$services}
+
+# run the configured sequence
+for i in $cfg_services
+do
+    if [ -x /etc/rc.d/init.d/$i ]
+    then                                                                        
+        /etc/rc.d/init.d/$i $mode
+    fi                                                                          
+done
+
+if [ $# -ge 2 ]
+then 
+    exit 0
+fi
+# show all kernel log messages
+#echo 8 >  /proc/sys/kernel/printk
+
+# run rc.local if present and executable
+if [ -x /etc/rc.d/rc.local ]
+then 
+    /etc/rc.d/rc.local
+fi
+
+# run onyx application
+if [ $mode = "start" ]
+then
+    /etc/appstart.sh
+fi
+
+if [ $mode = "stop" ]
+then
+    sync
+fi

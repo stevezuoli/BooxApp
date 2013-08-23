@@ -1,0 +1,1 @@
+SOURCES = create_boot_splash.cpp

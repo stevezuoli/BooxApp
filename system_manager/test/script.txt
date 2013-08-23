@@ -1,0 +1,413 @@
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.system_manager /com/onyx/object/system_manager  com.onyx.interface.system_manager.connect3g string:"" string:"" string:"" 
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.text_editor /com/onyx/object/text_editor com.onyx.interface.text_editor.suspend
+
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.system_manager /com/onyx/object/system_manager  com.onyx.interface.system_manager.report3GNetwork int32:0 int32:5 int32:3
+
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.system_manager /com/onyx/object/system_manager  com.onyx.interface.system_manager.connect3g string:"" string:"" string:"" 
+
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.onyx_reader /com/onyx/object/onyx_reader com.onyx.interface.onyx_reader.nextPage
+
+
+/usr/sbin/pppd connect "/usr/sbin/chat -v -f /media/flash/dialup.txt" /dev/ttyUSB0 nodetach crtscts debug usepeerdns defaultroute linkname onyx  plugin /usr/lib/pppd/2.4.4/libpppd_onyx_plugin.so
+
+# steps to use wifi of device.
+1. Make sure you already load all modules.
+modprobe libertas
+modprobe libertas_sdio
+
+2. Launch the system bus. Make sure the path exist
+mkdir -p /var/run/dbus
+dbus-daemon --system --print-address
+export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket,guid=8ca5f764457e137f6acb9ee9386d45bb
+
+3. Launch wpa_supplicant
+wpa_supplicant -i eth0 -D wext -c /etc/wpa.conf -u -dd
+
+
+
+
+# Start the wpa_supplicant with dbus enabled.
+/wpa_supplicant -B -P /var/run/wpa_supplicant.wlan0.pid -i wlan0 -D wext -C /var/run/wpa_supplicant -u
+wpa_supplicant -B -P /var/run/wpa_supplicant.eth0.pid -i eth0 -D wext -C /var/run/wpa_supplicant -u
+
+http://www.nabble.com/0.7-not-working-with-linux-2.6.24-td15422455.html
+
+## Step1: Query the interface.
+dbus-send --system --print-reply --type=method_call  --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant  fi.epitest.hostap.WPASupplicant.getInterface string:"eth0" 
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.system_manager /com/onyx/object/system_manager  com.onyx.interface.system_manager.dbgChangeUSBCable boolean:true
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.nm /com/onyx/object/nm  com.onyx.interface.nm.scan
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.nm /com/onyx/object/nm  com.onyx.interface.nm.connect string:"tiger" string:"OnyxWpa2009"
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.webbrowser /com/onyx/object/webbrowser  com.onyx.interface.webbrowser.connectTo string:"ONYX-TESTWEP" string:"ONYX1"
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.webbrowser /com/onyx/object/webbrowser  com.onyx.interface.webbrowser.scan
+
+"ONYX-TESTWEP"
+
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.nm /com/onyx/object/nm  com.onyx.interface.nm.connect string:"onyx-wpa-test" string:"OnyxWpa2009"
+
+
+
+method return sender=:1.231 -> dest=:1.238 reply_serial=2 
+   object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0" 
+
+## Step2 Ask the wpa_supplicant to scan by using the object path returned by wpa_supplicant
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0 fi.epitest.hostap.WPASupplicant.Interface.scan 
+
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0 fi.epitest.hostap.WPASupplicant.Interface.state
+
+## Step3 Query the scan result.
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0 fi.epitest.hostap.WPASupplicant.Interface.scanResults 
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0 fi.epitest.hostap.WPASupplicant.Interface.capabilities
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0 fi.epitest.hostap.WPASupplicant.Interface.addNetwork
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0/Networks/0 fi.epitest.hostap.WPASupplicant.interface.setBlobs map
+
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0 fi.epitest.hostap.WPASupplicant.Interface.setAPScan uint32:0
+
+# Not work yet.
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0/Networks/1 fi.epitest.hostap.WPASupplicant.Interface.selectNetwork
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0/Networks/1 fi.epitest.hostap.WPASupplicant.Network.set dict:string:variant:"ssid",variant:string:"lion"
+
+
+# Parse the scan result.
+
+## Query the bssid properties.
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0021278028c0 fi.epitest.hostap.WPASupplicant.BSSID.properties string:"0021278028c0"
+
+
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0015e90e98d2 fi.epitest.hostap.WPASupplicant.BSSID.properties string:"0015e90e98d2"
+
+
+
+
+## Some signals.
+signal sender=:1.30 -> dest=(null destination) path=/fi/epitest/hostap/WPASupplicant/Interfaces/0; interface=fi.epitest.hostap.WPASupplicant.Interface; member=StateChange
+   string "SCANNING"
+   string "INACTIVE"
+signal sender=:1.30 -> dest=(null destination) path=/fi/epitest/hostap/WPASupplicant/Interfaces/0; interface=fi.epitest.hostap.WPASupplicant.Interface; member=ScanResultsAvailable
+signal sender=:1.30 -> dest=(null destination) path=/fi/epitest/hostap/WPASupplicant/Interfaces/0; interface=fi.epitest.hostap.WPASupplicant.Interface; member=StateChange
+   string "INACTIVE"
+   string "SCANNING"
+
+# network manager 
+nm_supplicant_interface_set_config -> setAPScan -> set_ap_scan_cb -> add_network_cb -> call_set_blobs -> set_blobs_cb -> call_set_network -> set_network_cb -> selectNetowrk -> select_network_cb
+
+
+nm_supplicant_config_get_blobs used by setBlobs.   // ca_cert, private_key and so on. can be empty.
+nm_supplicant_config_get_hash used by set(network).  // key_mgmt, ssid,  mode, frequency, scan_ssid, bssid
+when it's finished, call selectNetwork. 
+
+
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0021278028c0 fi.epitest.hostap.WPASupplicant.BSSID.properties string:"0021278028c0"
+
+dbus-send --system --print-reply --type=method_call --dest=fi.epitest.hostap.WPASupplicant /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/000ee8ede81e fi.epitest.hostap.WPASupplicant.BSSID.properties string:"000ee8ede81e"
+
+object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/000ee8ede81e"
+      object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/001d0f2c8f56"
+      object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0023cd6735c6"
+
+
+      object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/000ee8ede81e"
+      object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0021278028c0"
+      object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/001d0f2c8f56"
+      object path "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0023cd6735c6"
+
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.text /com/onyx/object/text com.onyx.interface.text.flip int32:1
+
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.webbrowser /com/onyx/object/webbrowser  com.onyx.interface.webbrowser.scan
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.webbrowser  /com/onyx/object/webbrowser com.onyx.interface.webbrowser.connectTo string:"tiger" string:"OnyxWpa2009"
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.webbrowser  /com/onyx/object/webbrowser com.onyx.interface.webbrowser.connectTo string:"onyx-wpa-test" string:"OnyxWpa2009"
+
+dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.webbrowser /com/onyx/object/webbrowser  com.onyx.interface.webbrowser.open string:"http://www.google.com/"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@onyx ~$ Naboo screen created!
+scheme http
+path
+[bs_cmd_flag_hif_mode_cmd] ... flagging cmd hif mode
+Lookup failed: "Temporary failure in name resolution"
+blit time 41
+Start wpa_supplicant.
+libertas_sdio: Libertas SDIO driver
+libertas_sdio: Copyright Pierre Ossman
+libertas: 00:1a:6b:a1:a9:b3, fw 9.70.3p24, cap 0x00000303
+libertas: PREP_CMD: command 0x00a3 failed: 2
+libertas: PREP_CMD: command 0x00a3 failed: 2
+libertas: eth0: Marvell WLAN 802.11 adapter
+start wpa wpa_supplicant -i eth0 -D wext -u -C /var/run/wpa_supplicant  -c /etc/wpa.conf
+object path /fi/epitest/hostap/WPASupplicant/Interfaces/0
+previous state SCANNING
+new state
+Disconnect returns ok.
+cmd acquire_address release
+Scan returns ok
+killall: udhcpc: no process killed
+cat: can't open '/var/run/udhcpc.eth0.pid': No such file or directory
+You need to specify whom to kill
+blit time 44
+blit time 44
+previous state DISCONNECTED
+new state SCANNING
+previous state SCANNING
+new state DISCONNECTED
+previous state DISCONNECTED
+new state SCANNING
+Sync widget spends 148
+Sync widget spends 144
+ScanResults returns ok
+Query ssid properties /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0021278028c0
+ssid 0021278028c0
+eth0      Scan completed :
+          Cell 01 - Address: 00:15:E9:0E:98:D2
+                    ESSID:"tiger"
+                    Mode:Managed
+                    Frequency:2.437 GHz (Channel 6)
+                    Quality=88/100  Signal level=-62 dBm  Noise level=-96 dBm
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s
+                              9 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    IE: WPA Version 1
+                        Group Cipher : TKIP
+                        Pairwise Ciphers (1) : TKIP
+                        Authentication Suites (1) : PSK
+          Cell 02 - Address: 00:21:27:80:28:C0
+                    ESSID:"onyx-wpa-test"
+                    Mode:Managed
+                    Frequency:2.447 GHz (Channel 8)
+                    Quality=99/100  Signal level=-33 dBm  Noise level=-96 dBm
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 6 Mb/s
+                              12 Mb/s; 24 Mb/s; 36 Mb/s; 9 Mb/s; 18 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    IE: WPA Version 1
+                        Group Cipher : TKIP
+                        Pairwise Ciphers (2) : TKIP CCMP
+                        Authentication Suites (1) : PSK
+                    IE: IEEE 802.11i/WPA2 Version 1
+                        Group Cipher : TKIP
+                        Pairwise Ciphers (2) : TKIP CCMP
+                        Authentication Suites (1) : PSK
+                       Preauthentication Supported
+
+ssid onyx-wpa-test
+capabilities 17
+quality 99
+noise 160
+level 223
+maxrate 54000000
+Query ssid properties /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0015e90e98d2
+ssid 0015e90e98d2
+ssid tiger
+capabilities 17
+quality 88
+noise 160
+level 194
+maxrate 54000000
+blit time 14
+Sync widget spends 147
+
+root@onyx ~$ dbus-send --system --print-reply --type=method_call  --dest=com.onyx.service.webbrowser  /com/onyx/object/webbrowser com.onyx.interface.webbrowser.connectTo string:"onyx-wpa-test" string:"OnyxWpa2009"
+Disconnect returns ok.
+removeNetwork
+Does not contain network path, ignore it.
+cmd acquire_address release
+setAP scan
+setAPScan returns ok
+addNetwork
+addNetwork returns ok
+setNetwork
+Dumping wifi properties
+"bssid" :  ""
+"capabilities" :  "17"
+"encrypted" :  "true"
+"group" :  "TKIP CCMP"
+"key_mgmt" :  "WPA-PSK WPA-EAP IEEE8021X NONE"
+"level" :  "223"
+"maxrate" :  "54000000"
+"network_path" :  "/fi/epitest/hostap/WPASupplicant/Interfaces/0/Networks/0"
+"noise" :  "160"
+"pairwise" :  "TKIP CCMP"
+"path" :  "/fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0021278028c0"
+"proto" :  ""
+"psk" :  "OnyxWpa2009"
+"quality" :  "99"
+"rsnie" :  "0"
+"ssid" :  "onyx-wpa-test"
+"wpa" :  "true"
+"wpa2" :  "true"
+"wpaie" :  "?
+             killall: udhcpc: no process killed
+cat: can't open '/var/run/udhcpc.eth0.pid': No such file or directory
+You need to specify whom to kill
+setNetwork returns ok
+selectNetowrk
+selectNetowrk returns ok
+blit time 1
+method return sender=:1.2 -> dest=:1.4 reply_serial=2
+root@onyx ~$ Sync widget spends 148
+previous state SCANNING
+new state DISCONNECTED
+previous state DISCONNECTED
+new state SCANNING
+ScanResults returns ok
+Query ssid properties /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0021278028c0
+ssid 0021278028c0
+ssid onyx-wpa-test
+capabilities 17
+quality 100
+noise 160
+level 219
+maxrate 54000000
+Query ssid properties /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0015e90e98d2
+ssid 0015e90e98d2
+ssid tiger
+capabilities 17
+quality 90
+noise 160
+level 196
+maxrate 54000000
+Query ssid properties /fi/epitest/hostap/WPASupplicant/Interfaces/0/BSSIDs/0019e03540b0
+ssid 0019e03540b0
+ssid GTPOWER
+capabilities 17
+quality 63
+noise 160
+level 177
+maxrate 54000000
+Don't trigger scan as it's in connecting state.
+previous state SCANNING
+new state ASSOCIATING
+previous state ASSOCIATING
+new state ASSOCIATED
+previous state ASSOCIATED
+new state 4WAY_HANDSHAKE
+previous state 4WAY_HANDSHAKE
+new state GROUP_HANDSHAKE
+previous state GROUP_HANDSHAKE
+new state COMPLETED
+cmd acquire_address acquire
+blit time 0
+killall: udhcpc: no process killed
+udhcpc (v1.6.1) started
+Sending discover...
+Sync widget spends 224
+previous state COMPLETED
+new state GROUP_HANDSHAKE
+previous state GROUP_HANDSHAKE
+new state COMPLETED
+cmd acquire_address acquire
+Killed
+udhcpc (v1.6.1) started
+Sending discover...
+Sending select for 192.168.0.169...
+Lease of 192.168.0.169 obtained, lease time 604800
+deleting routers
+SIOCDELRT: No such process
+adding dns 61.144.56.100
+adding dns 192.168.0.1
+
+root@onyx ~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:1A:6B:A1:A9:B3
+          inet addr:192.168.0.169  Bcast:192.168.0.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:2038 (1.9 Kb)  TX bytes:2131 (2.0 Kb)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+root@onyx ~$ voltage 3910 current 67 status 2
+previous state COMPLETED
+new state GROUP_HANDSHAKE
+previous state GROUP_HANDSHAKE
+new state COMPLETED
+cmd acquire_address acquire
+udhcpc (v1.6.1) started
+Sending discover...
+Sending select for 192.168.0.169...
+Lease of 192.168.0.169 obtained, lease time 604800
+deleting routers
+SIOCDELRT: No such process
+adding dns 61.144.56.100
+adding dns 192.168.0.1
+
+root@onyx ~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:1A:6B:A1:A9:B3
+          inet addr:192.168.0.169  Bcast:192.168.0.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:14 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:9 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:3575 (3.4 Kb)  TX bytes:3424 (3.3 Kb)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+root@onyx ~$ voltage 3912 current 67 status 2
+
+root@onyx ~$ ps axu
+  PID  Uid        VSZ Stat Command
+    1 root       2752 SW  init
+    2 root            SW< [kthreadd]
+    3 root            SW< [ksoftirqd/0]
+    4 root            SW< [events/0]
+    5 root            SW< [khelper]
+   43 root            SW< [kblockd/0]
+   51 root            SW< [ksuspend_usbd]
+   57 root            SW< [khubd]
+   69 root            SW< [kmmcd]
+   98 root            SW  [pdflush]
+   99 root            SW  [pdflush]
+  100 root            SW< [kswapd0]
+  101 root            SW< [aio/0]
+  104 root            SW< [kapmd]
+  126 root            SW< [mtdblockd]
+  163 root            SW< [hwevent]
+  171 root            SW< [mmcqd]
+  200 root       1604 SW< udevd --daemon
+  513 root       2268 SW  dbus-daemon --system --print-address
+  514 root      51552 SW  system_manager -qws -shell=explorer
+  516 root       2760 RW  -sh
+  520 root      53948 SW  explorer
+  523 root      74988 SW  web_browser http://www.onyx-international.com
+  532 root            SW< [ksdiorqd]
+  547 root            SW< [lbs_main]
+  548 root            SW< [lbs_worker]
+  550 root       3004 SW  /usr/bin/wpa_supplicant -i eth0 -D wext -u -C /var/ru
+  651 root       2756 SW  udhcpc -R -n -p /var/run/udhcpc.eth0.pid -i eth0
+  655 root       2756 RW  ps axu
+root@onyx ~$

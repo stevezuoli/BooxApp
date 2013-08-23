@@ -1,0 +1,28 @@
+内核层API：
+将某个复用脚设置成GPIO： 
+gpio_request
+设置读写方向：
+gpio_direction_output
+写GPIO：
+gpio_set_value
+读GPIO：
+gpio_get_value
+ 
+应用层使用GPIO, 相关寄存器：
+总共有128个可复用作GPIO的pin脚，分为4组，基地址分别为：
+GPIO1_BASE: 0xD4019000
+GPIO2_BASE: 0xD4019004
+GPIO3_BASE: 0xD4019008
+GPIO4_BASE: 0xD4019100
+ 
+GPIO方向寄存器GPDR （偏移0x0C, 0表示输入， 1表示输出）
+GPIO设置寄存器GPSR （偏移0x18, 写1表示将某个gpio pin脚设置为高电平，仅仅在GPIO配置成输出时有效）
+GPIO清除寄存器GPCR （偏移0x24, 写1表示将某个gpio pin脚设置为低电平，仅仅在GPIO配置成输出时有）
+GPIO状态寄存器GPLR （偏移0x0, 该寄存器保存某个gpio pin脚的电平状态，无论gpio pin脚的读写方向设置如何）
+ 
+另外， 在使用GPIO之前，需要将某个PIN脚设置为GPIO模式，相关寄存器：MFPR, 基地址0xD401E000.
+每个PIN脚均有自己的MFPR寄存器，PIN脚的偏移地址见PXA128-PXA16x_Apps_Processor_Software_Manual_2.86.pdf， 第472页。
+PIN脚的复用设置位于bit 0~2. 一般来讲将低三位设置为0表示复用为GPIO。某些PIN脚是上电即设置为GPIO的（即其Primary Function为AF0），对于此种情况， 无需再对MFPR进行设置。
+
+
+

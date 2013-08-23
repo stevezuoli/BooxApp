@@ -1,0 +1,36 @@
+This code is tested with Linux kernel Release 2.4.20 on PCI platform
+and 2.4.18-rmk7-pxa3-asi2 on Accelent platform
+
+Features:
+=========
+General:
+--------
+    
+    - Stack can work in OTG, Host Only, Device Only modes
+      (need to configure hardware also in those modes)
+
+    - PCI platform
+    	- Device & Host interrupts are combined
+
+    - Accelent platform
+    	- Device & Host interrupts are seperate
+
+    - NO DMA
+    
+    - NO power Management
+
+Host Stack:
+-----------
+    - Supports all kind of devices provided the corresponding class drivers
+    present.
+
+Device Stack:
+------------
+    - Enumerates as a Mass Storage devices with BOT protocol
+
+OTG Stack:
+---------
+    - Session Based Protocol
+    - Responds to VBUS pulsing of SRP
+    - Uses On-Chip internal Charge Pump
+

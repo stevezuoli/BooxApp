@@ -1,0 +1,1 @@
+CC=/opt/freescale/usr/local/gcc-4.1.2-glibc-2.5-nptl-3/arm-none-linux-gnueabi/bin/arm-linux-gcc CXX=/opt/freescale/usr/local/gcc-4.1.2-glibc-2.5-nptl-3/arm-none-linux-gnueabi/bin/arm-linux-g++ cmake -DBUILD_FOR_ARM:BOOL=ON  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON .

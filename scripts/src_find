@@ -1,0 +1,4 @@
+#!/bin/sh
+# Look for a string in all C++ source files.
+
+find . -name '*.cpp' -or -name '*.h' | xargs grep $@

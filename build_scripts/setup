@@ -1,0 +1,4 @@
+export PATH=/opt/freescale/usr/local/gcc-4.1.2-glibc-2.5-nptl-3/arm-none-linux-gnueabi/bin/:$PATH
+export PREFIX=/opt/onyx/release
+export HOST=arm-none-linux-gnueabi
+export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig

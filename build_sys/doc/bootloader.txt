@@ -1,0 +1,13 @@
+cd /home/ivan/ecos/ecos_20050912/
+to modify the source code
+
+
+source ../ecos-bin/ecosenv.sh
+make
+
+cp /home/ivan/ecos/ecos-build/install/bin/redboot.bin  /opt/onyx/naboo/trunk/boot/onyx_update/images
+
+         diag_printf("Set kprow6 to high.\n");
+         mxc_request_iomux(MX31_PIN_KEY_ROW6, OUTPUTCONFIG_GPIO, INPUTCONFIG_GPIO);
+         mxc_set_gpio_direction(MX31_PIN_KEY_ROW6, 0);
+         mxc_set_gpio_dataout(MX31_PIN_KEY_ROW6, 1);

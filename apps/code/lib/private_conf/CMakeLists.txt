@@ -1,0 +1,8 @@
+
+ENABLE_QT()
+
+FILE(GLOB CONF_HDRS *.h)
+FILE(GLOB CONF_SRCS *.cpp)
+
+ADD_LIBRARY(private_conf ${CONF_SRCS} ${CONF_HDRS})
+

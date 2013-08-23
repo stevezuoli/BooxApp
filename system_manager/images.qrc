@@ -1,0 +1,9 @@
+<!DOCTYPE RCC><RCC version="1.0">
+  <qresource>
+    <file>images/busy_a.png</file>
+    <file>images/busy_b.png</file>
+    <file>images/busy_c.png</file>
+    <file>images/busy_d.png</file>
+    <file>images/usb_connection.png</file>
+  </qresource>
+</RCC>

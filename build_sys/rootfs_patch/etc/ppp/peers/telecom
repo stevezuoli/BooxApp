@@ -1,0 +1,2 @@
+connect "/usr/sbin/chat -V -f /etc/ppp/telecom"  /dev/chatChannel 115200 crtscts  nodetach  debug  usepeerdns  ipcp-max-failure 30  defaultroute  linkname onyx  plugin /usr/lib/pppd/2.4.4/libpppd_onyx_plugin.so
+user ctnet@mycdma.cn

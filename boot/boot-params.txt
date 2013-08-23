@@ -1,0 +1,10 @@
+With initramfs:
+fis load initramfs
+exec -b 0x100000 -l 0x300000 -c "noinitrd console=ttymxc0,115200 root=/dev/mtdblock4 rootfstype=yaffs2 video=600*800:8 init=/linuxrc"
+
+Without initramfs:
+fis load kernel
+exec -b 0x100000 -l 0x200000 -c "noinitrd console=ttymxc0,115200 root=/dev/mtdblock4 rootfstype=yaffs2 video=600*800:8 init=/linuxrc"
+
+Password for root:
+tHA_56=*raNu

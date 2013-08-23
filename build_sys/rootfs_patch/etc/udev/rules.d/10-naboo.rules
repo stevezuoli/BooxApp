@@ -1,0 +1,19 @@
+## http://www.reactivated.net/writing_udev_rules.html
+## Persistent name for removable USB disk used in naboo project.
+## The following rule will create a symbolink /dev/usbdisk when usb disk is plugged in.
+BUS=="usb", KERNEL=="sd?1",  NAME="%k", SYMLINK+="usbdisk"
+
+## For SDMMC card
+KERNEL=="mmcblk*", NAME="%k", SYMLINK+="sdmmc"
+
+## Run mount -a everytime a block device is added/removed
+SUBSYSTEM=="block", run+="/usr/bin/naboo_sd_handler.sh"
+
+## SDIO watcher
+SUBSYSTEM=="sdio", run+="/usr/bin/naboo_sdio_handler.sh"
+
+## For firmware request
+ACTION=="add", SUBSYSTEM=="firmware", RUN="/sbin/hotplug"
+
+## For usb otg
+KERNEL=="fsl-usb2-udc", SUBSYSTEM=="platform", run+="/usr/bin/naboo_usb_handler.sh"

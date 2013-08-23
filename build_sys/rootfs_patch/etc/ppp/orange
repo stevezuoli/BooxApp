@@ -1,0 +1,12 @@
+# this is the chat script for orange
+
+ABORT "NO CARRIER"
+ABORT "NO DIALTONE"
+ABORT "ERROR"
+ABORT "NO ANSWER"
+ABORT "BUSY"
+TIMEOUT 30 
+"" at
+OK AT+CGDCONT=1,"IP","uinternet",,0,0
+OK atdt*99#
+CONNECT

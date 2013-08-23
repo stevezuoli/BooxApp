@@ -1,0 +1,70 @@
+When dithering, we can stop it.
+
+separate it into 
+
+for each rectangle, try to move
+
+trytoscroll(int index, int & height)
+{
+
+}
+
+next()
+{
+   VISIBLE_OK == trytoscroll(index, pageTop, offset, total);
+   {
+     if (offset != 0)
+     {
+        ++index;
+        pageTop = 0;
+     }	
+   }
+
+   //means we could not scroll from current position to next.
+   //should scroll back
+   offset = -outputScreen.height() + total;
+   trytoscroll(index, pageTop, offset, total);
+}
+
+
+
+
+init
+add/update
+scroll 
+update
+
+scroll -> should always succeed, only if the page size is unknown.
+
+
+how to go to the next page
+in page mode, mouse does not work?
+in continuous mode, mouse works
+
+put into the layout mgr to control
+
+
+
+1. iamges layout which can be used by pdf viewer and image viewer. define the features of the layout.
+2. 
+
+page mode , continuous mode.
+use rotation directly.
+
+
+which one should maintain the layout.
+ 
+view should do that.
+
+we hope the worker thread could be an optional one.
+
+OK, now how to put it.
+
+
+(view, worker thread) --> model --> image item --> just know render and the render options.
+
+1. view and worker thread should sync themselves. make sure they can access the image item safely.
+2. when render finished, update the local table including refer and some others.
+3. when 
+
+
